@@ -9,6 +9,7 @@ using System.Windows;
 
 namespace Calculator
 {
+    
     public class MainViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -22,6 +23,9 @@ namespace Calculator
 
         }
 
+        public bool Sum { get; set; } = true;
+        public bool Divide { get; set; }
+
         private double firstval;
         
         public double FirstVal
@@ -31,7 +35,14 @@ namespace Calculator
                 
                 firstval = value;
                 OnPropertyChanged();
-                Result = FirstVal + SecondVal;
+                if (Sum)
+                {
+                    Result = SumOperation(FirstVal, SecondVal);
+                }
+                else if (Divide)
+                {
+                    Result = DivideOperation(FirstVal, SecondVal);
+                }
 
             }
         }
@@ -45,10 +56,16 @@ namespace Calculator
                 
                 secondval = value;
                 OnPropertyChanged();
-                
-                Result = FirstVal + SecondVal;
-                               
-                
+                if (Sum)
+                {
+                    Result = SumOperation(FirstVal, SecondVal);
+                }
+                else if (Divide) 
+                {
+                    Result = DivideOperation(FirstVal, SecondVal);
+                }
+
+
             }
         }
 
@@ -59,8 +76,15 @@ namespace Calculator
             get { return result; }
             set { result = value; OnPropertyChanged(); }
         }
+        public double SumOperation(double x,double y) 
+        {
+            return x + y;
+        }
+        public double DivideOperation(double x, double y)
+        {
+            return x / y;
+        }
 
-       
 
     }
 }

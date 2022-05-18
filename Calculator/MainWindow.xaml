@@ -32,6 +32,19 @@
                 BorderThickness="1">
                 <TextBlock Text="{Binding Result}"></TextBlock>
         </Border>
-        
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+            <RadioButton IsChecked="{Binding Sum}" GroupName="Operations">
+                <RadioButton.Content>
+                    <TextBlock>Прибавляем</TextBlock>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton IsChecked="{Binding Divide}" GroupName="Operations" >
+                <RadioButton.Content>
+                    <TextBlock>Делим первое на второе</TextBlock>
+                </RadioButton.Content>
+            </RadioButton>
+        </StackPanel>
     </Grid>
 </Window>
